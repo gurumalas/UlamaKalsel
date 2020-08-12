@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">UlamaKalsel</string>
+    <string name="nama_ulamabanjar">Nama Ulama Banjar</string>
+    <string name="detail">Detail</string>
 </resources>
