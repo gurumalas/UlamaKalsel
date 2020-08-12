@@ -1,5 +1,5 @@
 package com.gurumalas.ulamakalsel;
-com.dicoding.picodiploma.myrecylerview.model
+//com.dicoding.picodiploma.myrecylerview.model
 
 class Ulamabanjar {
     public String getNama() {

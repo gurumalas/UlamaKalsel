@@ -1,5 +1,7 @@
 package com.gurumalas.ulamakalsel;
-com.dicoding.picodiploma.myrecylerview.model
+
+import java.util.ArrayList;
+
 
 class DataUlamaBanjar {
     private static String[] NamaUlamaBanjar = {
@@ -27,7 +29,7 @@ class DataUlamaBanjar {
             "ulama banjar.", //9
             "ulama banjarr." //10
     };
-    private static int[] heroesImages = {
+    private static int[] Gambarulama = {
             R.drawable.syekhmuhammadarsyadalbanjari,
             R.drawable.gurusekumpul,
             R.drawable.syekhabdussamad,
@@ -39,4 +41,17 @@ class DataUlamaBanjar {
             R.drawable.tuanguruzainalilmidalampagar,
             R.drawable.khkasyfulanwar
     };
+
+    static ArrayList<Ulamabanjar> getListData() {
+        ArrayList<Ulamabanjar> list = new ArrayList<>();
+        for (int position = 0; position < NamaUlamaBanjar.length; position++) {
+            Ulamabanjar ulamabanjar = new Ulamabanjar();
+            ulamabanjar.setNama(NamaUlamaBanjar[position]);
+            ulamabanjar.setDetail(Detailulama[position]);
+            ulamabanjar.setPhoto(Gambarulama[position]);
+//            Ulamabanjar.setPhoto(Gambarulama[position]);
+            list.add(ulamabanjar);
+        }
+        return list;
+    }
 }
