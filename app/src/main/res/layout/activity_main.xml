@@ -13,5 +13,5 @@
         android:layout_height="729dp"
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="1dp"
-        tools:listitem="@layout/item_row_ulamabanjar"/>
+        tools:listitem="@layout/item_grid_ulama"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
