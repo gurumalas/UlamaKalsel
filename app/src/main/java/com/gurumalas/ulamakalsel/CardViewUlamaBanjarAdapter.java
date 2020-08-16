@@ -59,6 +59,12 @@ public class CardViewUlamaBanjarAdapter extends RecyclerView.Adapter<CardViewUla
             }
         });
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(holder.itemView.getContext(), "Kamu memilih " + dafatarUlama.get(holder.getAdapterPosition()).getNama(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override

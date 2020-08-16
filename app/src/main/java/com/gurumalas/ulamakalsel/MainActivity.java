@@ -8,11 +8,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
+
+import com.gurumalas.ulamakalsel.GridUlamaBanjarAdapter;
+import com.gurumalas.ulamakalsel.ListUlamaBanjarAdapter;
+import com.gurumalas.ulamakalsel.DataUlamaBanjar;
+import com.gurumalas.ulamakalsel.Ulamabanjar;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    private String title = "Mode List";
+    private String title = "Mode Grid";
     private RecyclerView rvUlama;
     private ArrayList<Ulamabanjar> uruatan = new ArrayList<>();
 
@@ -34,11 +40,23 @@ public class MainActivity extends AppCompatActivity {
         rvUlama.setLayoutManager(new GridLayoutManager(this, 2));
         GridUlamaBanjarAdapter gridUlamaBanjarAdapter = new GridUlamaBanjarAdapter(uruatan);
         rvUlama.setAdapter(gridUlamaBanjarAdapter);
+        gridUlamaBanjarAdapter.setOnItemClickCallback( new GridUlamaBanjarAdapter.OnItemClickCallback()
+    {
+            @Override
+            public void onItemClicked(Ulamabanjar data) {
+                showSelectedUlama(data);
+            }
+
+    });
     }
     private void showRecyclerList(){
-        rvUlama.setLayoutManager(new LinearLayoutManager(this));
-        ListUlamaBanjarAdapter listUlamaBanjarAdapter = new ListUlamaBanjarAdapter(uruatan);
-        rvUlama.setAdapter(listUlamaBanjarAdapter);
+//        rvUlama.setLayoutManager(new LinearLayoutManager(this));
+//        ListUlamaBanjarAdapter listUlamaBanjarAdapter = new ListUlamaBanjarAdapter(uruatan);
+//        rvUlama.setAdapter(listUlamaBanjarAdapter);
+//        listUlamaBanjarAdapter.setOnItemClickCallback(new ListUlamaBanjarAdapter.OnItemClickCallback() {
+//            @Override
+//            public void onItemClicked(Ulamabanjar data) { showSelectedUlama(data); }
+//        });
     }
 
     private void showRecyclerCardView(){
@@ -74,10 +92,18 @@ public class MainActivity extends AppCompatActivity {
                 showRecyclerCardView();
                 break;
         }
+        setActionBarTitle(title);
     }
     private void setActionBarTitle(String title) {
         if (getSupportActionBar() != null) {
             getSupportActionBar().setTitle(title);
         }
     }
+
+    private void showSelectedUlama(Ulamabanjar ulamabanjar) {
+        Toast.makeText(this, "Kamu memilih " + ulamabanjar.getNama(), Toast.LENGTH_SHORT).show();
+    }
+
+
+
 }

@@ -15,9 +15,13 @@ import java.util.ArrayList;
 
 public class ListUlamaBanjarAdapter  extends RecyclerView.Adapter<ListUlamaBanjarAdapter.ListViewHolder> {
     private ArrayList<Ulamabanjar> daftarUlama;
-
+    private OnItemClickCallback onItemClickCallback;
     public ListUlamaBanjarAdapter(ArrayList<Ulamabanjar> daftar) {
         this.daftarUlama = daftar;
+    }
+
+    public void setOnItemClickCallback(OnItemClickCallback onItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback;
     }
 
     @NonNull
@@ -38,6 +42,13 @@ public class ListUlamaBanjarAdapter  extends RecyclerView.Adapter<ListUlamaBanja
                 .into(holder.imgFoto);
         holder.teksNama.setText(ulamabanjar.getNama());
         holder.teksDetail.setText(ulamabanjar.getDetail());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onItemClickCallback.onItemClicked(daftarUlama.get(holder.getAdapterPosition()));
+            }
+        });
     }
 
     @Override
@@ -56,7 +67,7 @@ public class ListUlamaBanjarAdapter  extends RecyclerView.Adapter<ListUlamaBanja
             teksDetail =itemView.findViewById(R.id.tv_item_detail);
         }
     }
-//    public class ListViewHolder {
-//
-//    }
+    public interface OnItemClickCallback {
+        void onItemClicked(Ulamabanjar data);
+    }
 }

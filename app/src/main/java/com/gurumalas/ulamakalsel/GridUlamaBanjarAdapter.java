@@ -15,9 +15,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class GridUlamaBanjarAdapter extends   RecyclerView.Adapter<GridUlamaBanjarAdapter.GridViewHolder>{
     private ArrayList<Ulamabanjar> daftarulama;
+    private OnItemClickCallback onItemClickCallback;
+
+    public void setOnItemClickCallback(GridUlamaBanjarAdapter.OnItemClickCallback onItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback;
+    }
     public GridUlamaBanjarAdapter(ArrayList<Ulamabanjar> daftarulama) {
         this.daftarulama = daftarulama;
     }
+
 
 
     @NonNull
@@ -35,6 +41,12 @@ public class GridUlamaBanjarAdapter extends   RecyclerView.Adapter<GridUlamaBanj
                 .apply(new RequestOptions().override(350, 550))
                 .into(holder.imgFoto);
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onItemClickCallback.onItemClicked(daftarulama.get(holder.getAdapterPosition()));
+            }
+        });
     }
 
     @Override
@@ -48,5 +60,8 @@ public class GridUlamaBanjarAdapter extends   RecyclerView.Adapter<GridUlamaBanj
             super(itemView);
             imgFoto = itemView.findViewById(R.id.img_item_photo);
         }
+    }
+    public interface OnItemClickCallback {
+        void onItemClicked(Ulamabanjar data);
     }
 }
